@@ -22,7 +22,7 @@ console.log("outerWidth: ", widthClientOuter);
 
 // Dom elements
 const canvas = document.getElementById("root");
-canvas.setAttribute("width", widthClientInner); 
+canvas.setAttribute("width", widthClientInner);
 const container = document.getElementById("container");
 const number = document.getElementById("number");
 const btn = document.getElementById("btn");
@@ -44,36 +44,42 @@ const getnumber = () => {
   container.innerHTML = "";
   onediv.innerHTML = "";
   let inputValue = document.getElementById("number").value;
-  console.log(`Numero : ${inputValue}`);
-  num = inputValue;
-  do {
-    //console.log(num+" :en do")
-    num = collatz(num);
-    steep++;
-    //console.log(`steep:${steep}`);
-  } while (num != 1);
-  if (num == 1) {
-    console.log("finished=1");
-    let arr = [1];
-    drawOneDiv(arr);
-   
-    const totalnum = alleven.length + allodd.length + 1;
-    console.log("even:"+alleven.length);
-    console.log("total numeros:"+totalnum);
-    const averagEven = (alleven.length / totalnum) * 100;
-    let evenRound;
-    evenRound = Math.round(averagEven);
-    console.log("% of even:"+evenRound);
-    const arraynum = alleven.concat(allodd);
-    drawDiv(arraynum);
-    //console.timeEnd(label);
-    console.log("total barra:"+widthClientInner)
-    let barmesure = (widthClientInner/100)*evenRound;
-    console.log("%of even"+barmesure);
-    drawBar(barmesure);
+  if (inputValue != 0) {
+    console.log(`Numero : ${inputValue}`);
+    num = inputValue;
+    do {
+      //console.log(num+" :en do")
+      num = collatz(num);
+      console.log(num);
+      steep++;
+      //console.log(`steep:${steep}`);
+    } while (num != 1);
+    if (num == 1) {
+      console.log("finished=1");
+      let arr = [1];
+      drawOneDiv(arr);
+
+      const totalnum = alleven.length + allodd.length + 1;
+      console.log("even:" + alleven.length);
+      console.log("total numeros:" + totalnum);
+      const averagEven = (alleven.length / totalnum) * 100;
+      let evenRound;
+      evenRound = Math.round(averagEven);
+      console.log("% of even:" + evenRound);
+      const arraynum = alleven.concat(allodd);
+      drawDiv(arraynum);
+      //console.timeEnd(label);
+      console.log("total barra:" + widthClientInner);
+      let barmesure = (widthClientInner / 100) * evenRound;
+      console.log("%of even" + barmesure);
+      drawBar(barmesure);
+    }
+  } else {
+    alert("Please enter a number > 0");
   }
 };
 
+// Events
 btn.addEventListener("click", getnumber);
 
 // collatz Conjecture
@@ -90,7 +96,7 @@ const collatz = (num) => {
   }
 };
 
-//Draw bar
+//Draw bar in canvas element
 const drawBar = (long) => {
   let canvas = document.getElementById("root");
   canvas.style = "background-color: blue";
@@ -118,13 +124,13 @@ const drawDiv = (arraynum) => {
   });
 };
 
-const drawOneDiv = (arr)=>{
-  arr.forEach((element)=>{
+const drawOneDiv = (arr) => {
+  arr.forEach((element) => {
     let divi = document.createElement("div");
     if (element == 1) {
       divi.className = "div_one";
     }
-    divi.innerHTML=element;
+    divi.innerHTML = element;
     onediv.appendChild(divi);
-  })
-}
+  });
+};
