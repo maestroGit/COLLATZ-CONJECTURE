@@ -2,18 +2,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin:10px 100px;
+    align-items: center;
+    margin:10px 10px;
 }
+#root {
+    border: 1px solid #000;
+  }
+
+/* Selects any <input> when focused */
+input:focus {
+    color: rgb(8, 73, 8);
+  }
 
 #container {
+    margin-top:5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .div_even {
-    display: flex;
-    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    width: 50px;
     height: 15px;
     background-color: rgb(253, 6, 6);
     justify-content: center;
@@ -23,6 +34,18 @@
 }
 
 .div_odd {
+    display: inline-block;
+    overflow:hidden;
+    width: 50px;
+    height: 15px;
+    background-color: rgb(4, 41, 248);
+    justify-content: center;
+    align-items: center;
+    border-style: outset;
+    border-color: rgba(8, 43, 243, 0.609);
+}
+
+.div_one {
     display: flex;
     width: 100px;
     height: 15px;
@@ -30,5 +53,25 @@
     justify-content: center;
     align-items: center;
     border-style: outset;
-    border-color: rgba(8, 43, 243, 0.609);
+    border-color: rgb(250, 246, 6);
+    animation: mymove 1s infinite;
+}
+
+@keyframes mymove {
+    from {border-color: yellow;}
+    to {border-color: blue;}
+  }
+  
+
+#btn {
+    margin:5px;
+    width:100px;
+    background-color: green;
+    border-radius: 50px;
+}
+
+#number {
+    width:150px;
+    height: 20px;
+    background-color: rgba(186, 245, 91, 0.705);
 }

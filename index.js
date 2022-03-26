@@ -21,22 +21,28 @@ let widthClientOuter = window.outerWidth;
 console.log("outerWidth: ", widthClientOuter);
 
 // Dom elements
+const canvas = document.getElementById("root");
+canvas.setAttribute("width", widthClientInner); 
 const container = document.getElementById("container");
 const number = document.getElementById("number");
 const btn = document.getElementById("btn");
-console.log(`Default value: ${number.defaultValue}`);
+//console.log(`Default value: ${number.defaultValue}`);
 
 // Variables
 let num;
 let steep = 1;
 let label;
-console.time(label);
+//console.time(label);
 const alleven = [];
 const allodd = [];
 let evenRound;
 
 // get input number
 const getnumber = () => {
+  alleven.length = 0;
+  allodd.length = 0;
+  container.innerHTML = "";
+  onediv.innerHTML = "";
   let inputValue = document.getElementById("number").value;
   console.log(`Numero : ${inputValue}`);
   num = inputValue;
@@ -44,28 +50,27 @@ const getnumber = () => {
     //console.log(num+" :en do")
     num = collatz(num);
     steep++;
-    console.log(`steep:${steep}`);
+    //console.log(`steep:${steep}`);
   } while (num != 1);
   if (num == 1) {
-    console.log("finished");
+    console.log("finished=1");
     let arr = [1];
-    drawDiv(arr);
-    // let div = document.createElement("div");
-    // container.append(div);
-
-
-    //document.write(`<br>${num}`);
-    const totalnum = alleven.length + allodd.length;
-    console.log(alleven.length);
-    console.log(totalnum);
+    drawOneDiv(arr);
+   
+    const totalnum = alleven.length + allodd.length + 1;
+    console.log("even:"+alleven.length);
+    console.log("total numeros:"+totalnum);
     const averagEven = (alleven.length / totalnum) * 100;
     let evenRound;
     evenRound = Math.round(averagEven);
-    console.log(evenRound);
+    console.log("% of even:"+evenRound);
     const arraynum = alleven.concat(allodd);
     drawDiv(arraynum);
-    console.timeEnd(label);
-    drawBar(evenRound * 10);
+    //console.timeEnd(label);
+    console.log("total barra:"+widthClientInner)
+    let barmesure = (widthClientInner/100)*evenRound;
+    console.log("%of even"+barmesure);
+    drawBar(barmesure);
   }
 };
 
@@ -76,12 +81,10 @@ const collatz = (num) => {
   //console.log(num);
   if (num % 2 == 0) {
     console.log(`${num} is even`);
-    //document.write(`<br>${num}`);
     alleven.push(num);
     return num / 2;
   } else {
     console.log(`${num} is odd`);
-    //document.write(`<br>${num}`);
     allodd.push(num);
     return 3 * num + 1;
   }
@@ -90,11 +93,11 @@ const collatz = (num) => {
 //Draw bar
 const drawBar = (long) => {
   let canvas = document.getElementById("root");
+  canvas.style = "background-color: blue";
   let contex = canvas.getContext("2d");
   contex.fillStyle = "red";
   contex.fillRect(1, 1, long, 200);
 };
-
 
 // Draw div
 const drawDiv = (arraynum) => {
@@ -102,13 +105,26 @@ const drawDiv = (arraynum) => {
   arraynum.forEach((element) => {
     let div = document.createElement("div");
     // add class if even or odd
-    if(element%2 == 0){
+    if (element % 2 == 0) {
       div.className = "div_even";
-    }else {
+    } else {
       div.className = "div_odd";
+      // if (element == 1) {
+      //   div.className = "div_one";
+      // }
     }
-    div.innerHTML=element;
-    container.append(div);
+    div.innerHTML = element;
+    container.appendChild(div);
   });
 };
 
+const drawOneDiv = (arr)=>{
+  arr.forEach((element)=>{
+    let divi = document.createElement("div");
+    if (element == 1) {
+      divi.className = "div_one";
+    }
+    divi.innerHTML=element;
+    onediv.appendChild(divi);
+  })
+}
