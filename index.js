@@ -68,7 +68,7 @@ const getnumber = () => {
       console.log("finished=1");
       let arr = [1];
       drawOneDiv(arr);
-      const totalnum = alleven.length + allodd.length + 1;
+      const totalnum = alleven.length + allodd.length;
       console.log("even:" + alleven.length);
       console.log("total numeros:" + totalnum);
       const averagEven = (alleven.length / totalnum) * 100;
