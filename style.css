@@ -1,77 +1,90 @@
 .root {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin:10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+  font-weight: bold;
 }
-#root {
-    border: 1px solid rgb(253, 252, 252);
-  }
 
-/* Selects any <input> when focused */
+input {
+  font-weight: bold;
+  font-size: 16px;
+  color: rgb(6, 252, 6);
+}
+
 input:focus {
-    color: rgb(8, 73, 8);
-  }
+  color: rgb(1, 73, 1);
+}
 
 #container {
-    margin-top:5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .div_even {
-    display: inline-block;
-    overflow: hidden;
-    width: 50px;
-    height: 15px;
-    background-color: rgb(253, 6, 6);
-    justify-content: center;
-    align-items: center;
-    border-style: outset;
-    border-color: rgba(255, 51, 0, 0.445);
+  display: inline-block;
+  overflow: hidden;
+  height: 15px;
+  background-color: rgb(253, 6, 6);
+  justify-content: center;
+  align-items: center;
+  border-style: outset;
+  border-color: rgba(251, 129, 129, 0.609);
 }
 
 .div_odd {
-    display: inline-block;
-    overflow:hidden;
-    width: 50px;
-    height: 15px;
-    background-color: rgb(4, 41, 248);
-    justify-content: center;
-    align-items: center;
-    border-style: outset;
-    border-color: rgba(8, 43, 243, 0.609);
+  display: inline-block;
+  font-weight: bold;
+  overflow: hidden;
+  height: 15px;
+  background-color: rgb(4, 41, 248);
+  justify-content: center;
+  align-items: center;
+  border-style: outset;
+  border-color: rgba(93, 117, 251, 0.609);
 }
 
 .div_one {
-    display: flex;
-    width: 100px;
-    height: 15px;
-    background-color: rgb(4, 41, 248);
-    justify-content: center;
-    align-items: center;
-    border-style: outset;
-    border-color: rgb(250, 246, 6);
-    animation: mymove 1s infinite;
+  display: flex;
+  width: 50px;
+  height: 15px;
+  background-color: rgb(4, 41, 248);
+  justify-content: center;
+  align-items: center;
+  border-style: outset;
+  border: 5px dotted;
+  border-color: rgb(250, 246, 6);
+  animation: mymove 1s infinite;
 }
 
 @keyframes mymove {
-    from {border-color: yellow;}
-    to {border-color: blue;}
+  from {
+    border-color: yellow;
   }
-  
+  to {
+    border-color: blue;
+  }
+}
 
 #btn {
-    margin:5px;
-    width:100px;
-    background-color: green;
-    border-radius: 50px;
+  margin: 5px;
+  width: 100px;
+  background-color: green;
+  border-radius: 50px;
 }
 
 #number {
-    width:150px;
-    height: 20px;
-    background-color: rgba(186, 245, 91, 0.705);
+  width: 150px;
+  height: 20px;
+  background-color: rgba(229, 252, 193, 0.657);
+}
+
+.results {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

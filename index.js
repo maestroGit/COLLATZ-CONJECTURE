@@ -26,6 +26,7 @@ canvas.setAttribute("width", widthClientInner);
 const container = document.getElementById("container");
 const number = document.getElementById("number");
 const btn = document.getElementById("btn");
+const results = document.getElementsByClassName("results");
 //console.log(`Default value: ${number.defaultValue}`);
 
 // Variables
@@ -43,6 +44,7 @@ const getnumber = () => {
   allodd.length = 0;
   container.innerHTML = "";
   onediv.innerHTML = "";
+  results[0].innerHTML = "";
   let inputValue = document.getElementById("number").value;
   if (inputValue != 0) {
     console.log(`Numero : ${inputValue}`);
@@ -50,7 +52,11 @@ const getnumber = () => {
     do {
       //console.log(num+" :en do")
       num = collatz(num);
-      console.log(num);
+      setTimeout(console.log(num),1000);
+      //console.log(num);
+      let collatzNUm = document.createElement("div");
+      collatzNUm.innerText = num+"-";
+      results[0].append(collatzNUm);
       steep++;
       //console.log(`steep:${steep}`);
     } while (num != 1);
@@ -58,7 +64,6 @@ const getnumber = () => {
       console.log("finished=1");
       let arr = [1];
       drawOneDiv(arr);
-
       const totalnum = alleven.length + allodd.length + 1;
       console.log("even:" + alleven.length);
       console.log("total numeros:" + totalnum);
@@ -71,11 +76,11 @@ const getnumber = () => {
       //console.timeEnd(label);
       console.log("total barra:" + widthClientInner);
       let barmesure = (widthClientInner / 100) * evenRound;
-      console.log("%of even" + barmesure);
+      console.log("% of even=" + barmesure);
       drawBar(barmesure);
     }
   } else {
-    alert("Please enter a number > 0");
+    alert("Please, enter a number > 0");
   }
 };
 
@@ -102,7 +107,7 @@ const drawBar = (long) => {
   canvas.style = "background-color: blue";
   let contex = canvas.getContext("2d");
   contex.fillStyle = "red";
-  contex.fillRect(1, 1, long, 200);
+  contex.fillRect(1, 1, long, 80);
 };
 
 // Draw div
