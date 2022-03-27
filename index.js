@@ -21,6 +21,7 @@ let widthClientOuter = window.outerWidth;
 console.log("outerWidth: ", widthClientOuter);
 
 // Dom elements
+const canvasdiv = document.getElementById("canvas");
 const canvas = document.getElementById("root");
 canvas.setAttribute("width", widthClientInner);
 const container = document.getElementById("container");
@@ -30,18 +31,21 @@ const results = document.getElementsByClassName("results");
 //console.log(`Default value: ${number.defaultValue}`);
 
 // Variables
+let count = 0;
 let num;
 let steep = 1;
 let label;
-//console.time(label);
 const alleven = [];
 const allodd = [];
 let evenRound;
+//console.time(label);
 
 // get input number
 const getnumber = () => {
+  count++;
   alleven.length = 0;
   allodd.length = 0;
+  canvas.innerHTML = "";
   container.innerHTML = "";
   onediv.innerHTML = "";
   results[0].innerHTML = "";
@@ -52,10 +56,10 @@ const getnumber = () => {
     do {
       //console.log(num+" :en do")
       num = collatz(num);
-      setTimeout(console.log(num),1000);
+      setTimeout(console.log(num), 1000);
       //console.log(num);
       let collatzNUm = document.createElement("div");
-      collatzNUm.innerText = num+"-";
+      collatzNUm.innerText = num + "-";
       results[0].append(collatzNUm);
       steep++;
       //console.log(`steep:${steep}`);
@@ -103,9 +107,12 @@ const collatz = (num) => {
 
 //Draw bar in canvas element
 const drawBar = (long) => {
-  let canvas = document.getElementById("root");
+  if(count>1){
+    cleanCanvas();
+    console.log("cleanCanvas"+long);
+  }
   canvas.style = "background-color: blue";
-  let contex = canvas.getContext("2d");
+  const contex = canvas.getContext("2d");
   contex.fillStyle = "red";
   contex.fillRect(1, 1, long, 80);
 };
@@ -139,3 +146,12 @@ const drawOneDiv = (arr) => {
     onediv.appendChild(divi);
   });
 };
+
+const cleanCanvas = ()=>{
+  //canvasdiv.innerHTML="";
+  canvas.style = "background-color: blue";
+  const contex = canvas.getContext("2d");
+  contex.fillStyle = "blue";
+  contex.fillRect(1, 1, widthClientInner, 80);
+
+}

@@ -10,6 +10,15 @@
   <body>
     <div class="root">
       <h1>Collatz Conjecture</h1>
+      <figure>
+        <figcaption>Listen explaineixons:</figcaption>
+        <audio
+            controls
+            src="audio.mp3">
+                Your browser does not support the
+                <code>audio</code> element.
+        </audio>
+    </figure>
       <label>ENTER NUMBER</label>
       <input
         type="number"
@@ -18,10 +27,12 @@
         min="1"
       />
       <input type="button" id="btn" value="click"/>
-    <canvas
-      id="root"
-      style="background-color: white" height="80"
-    ></canvas>
+      <div id="canvas">
+        <canvas
+          id="root"
+          style="background-color: white" height="80"
+        ></canvas>
+      </div>
     <div id="container"></div>
     <div id="onediv"></div>
     <div class="results"></div>
