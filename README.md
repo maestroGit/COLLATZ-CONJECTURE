@@ -2,11 +2,10 @@
 
 🧰 Toolbox: Vanilla JS, CSS.
 
-Frontend project deployed in vercel
-🏄 
+### First Frontend project deployed in vercel
 
 Insperied:
-🏄
+🏄 https://collatz-conjecture.vercel.app
 
 The Collatz conjecture in mathematics asks 
 whether repeating two simple arithmetic operations 
@@ -19,3 +18,7 @@ It concerns sequences of integers in which each term
  the next term is 3 times the previous term plus 1. 
  The conjecture is that these sequences always reach 1, 
  no matter which positive integer is chosen to start the sequence.
+
+### Insperied
+ 🏄
+ >[Radu Mariescu-Istodor](https://youtu.be/O-1GHM17Khk)
